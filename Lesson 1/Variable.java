@@ -1,21 +1,21 @@
 public class Variable {
 	public static void main(String[] args) {
-		byte byteNum = 1;
-		short shortNum = 2;
-		int intNum = 3;
-		long longNum = 4;
-		float floatNum = 5.0f;
-		double doubleNum = 6.00;
-		char sym = '#';
-		boolean bool = true;
+		byte numUsers = 1; //количество пользователей
+		short numCores = 2; //число ядер процессора
+		int numThreads = 4; //количество потоков процессора
+		long sizeRAM = 16; //размер оперативной памяти
+		float memoryFreq = 1195.9f; //частота оперативной памяти
+		double cpuFreq = 3.20; // частота процессора
+		char numDisplays = '1'; //число монитров
+		boolean printer = false; //наличие принтера
 
-		System.out.println(byteNum);
-		System.out.println(shortNum);
-		System.out.println(intNum);
-		System.out.println(longNum);
-		System.out.println(floatNum);
-		System.out.println(doubleNum);
-		System.out.println(sym);
-		System.out.println(bool);
+		System.out.println(numUsers);
+		System.out.println(numCores);
+		System.out.println(numThreads);
+		System.out.println(sizeRAM);
+		System.out.println(memoryFreq);
+		System.out.println(cpuFreq);
+		System.out.println(numDisplays);
+		System.out.println(printer);
 	}
 }
