@@ -9,11 +9,11 @@ public class ConditionalStatement  {
 			System.out.println("Вам больше 20 лет");
 		}
 
-		if(sex == true) {
+		if(sex) {
 			System.out.println("Привет, мужик!");
 		}
 
-		if(sex != true) {
+		if(!sex) {
 			System.out.println("Привет, девчуля");
 		}
 
