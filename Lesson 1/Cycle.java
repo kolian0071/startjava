@@ -1,12 +1,11 @@
 public class Cycle {
 	public static void main(String[] args) {
-		int numWhile = 6;
-
 		for(int i = 0; i <= 20; i++) {
 			System.out.print(i + " ");
 		}
 		System.out.println();
 
+		int numWhile = 6;
 		while(numWhile >= -6) {
 			System.out.print(numWhile + " ");
 			numWhile -= 2;
