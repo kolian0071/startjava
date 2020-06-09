@@ -26,10 +26,9 @@ public class Calculator {
 		} else if(sign == '^') {
 			int result = 1;
 			for(int i = 1; i <= secondNum; i++) {
-					result *= firstNum;
+				result *= firstNum;
 			}
 				System.out.println("Число " + firstNum + " в степени " + secondNum + " равно " + result);
-			
 		} else if(sign == '%') {
 			int result = firstNum % secondNum;
 			System.out.println("Остаток от деления числа " + firstNum + " на число " + secondNum + " равен " + result);
