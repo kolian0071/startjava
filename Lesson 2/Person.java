@@ -6,7 +6,7 @@ public class Person {
 	int height = 182;
 	int weight = 83;
 
-	void moove() {
+	void move() {
 
 	}
 
