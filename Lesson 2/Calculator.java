@@ -3,7 +3,6 @@ public class Calculator {
 	private int firstNum;
 	private int secondNum;
 	private char sign;
-	private int result;
 
 	public int getFirstNum() {
 		return firstNum;
@@ -15,10 +14,6 @@ public class Calculator {
 
 	public char getSign() {
 		return sign;
-	}
-
-	public int getResult() {
-		return result;
 	}
 
 	public void setFirstNum(int firstNum) {
@@ -33,39 +28,48 @@ public class Calculator {
 		this.sign = sign;
 	}
 
-	public void solution() {
+	public int calculate() {
+		int result = 0;
 		switch(sign) {
-			case '+': result = addition(firstNum, secondNum);
-			break;
-			case '-': result = subtraction(firstNum, secondNum);
-			break;
-			case '*': result = multiplication(firstNum, secondNum);
-			break;
-			case '/': result = division(firstNum, secondNum);
-			break;
-			case '^': result = exponentiation(firstNum, secondNum);
-			break;
-			case '%': result = module(firstNum, secondNum);
+			case '+':
+				result = add(firstNum, secondNum);
+				break;
+			case '-':
+				result = subtract(firstNum, secondNum);
+				break;
+			case '*':
+				result = multiply(firstNum, secondNum);
+				break;
+			case '/':
+				result = divide(firstNum, secondNum);
+				break;
+			case '^':
+				result = exp(firstNum, secondNum);
+				break;
+			case '%':
+				result = mod(firstNum, secondNum);
+				break;
 		}
+		return result;
 	}
 
-	public int addition(int firstNum, int secondNum) {
+	public int add(int firstNum, int secondNum) {
 		return firstNum + secondNum;
 	}
 
-	public int subtraction(int firstNum, int secondNum) {
+	public int subtract(int firstNum, int secondNum) {
 		return firstNum - secondNum;
 	}
 
-	public int multiplication(int firstNum, int secondNum) {
+	public int multiply(int firstNum, int secondNum) {
 		return firstNum * secondNum;
 	}
 
-	public int division(int firstNum, int secondNum) {
+	public int divide(int firstNum, int secondNum) {
 		return firstNum / secondNum;
 	}
 
-	public int exponentiation(int firstNum, int secondNum) {
+	public int exp(int firstNum, int secondNum) {
 		int result = 1;
 			for(int i = 1; i <= secondNum; i++) {
 				result *= firstNum;
@@ -73,9 +77,7 @@ public class Calculator {
 		return result;
 	}
 
-	public int module(int firstNum, int secondNum) {
+	public int mod(int firstNum, int secondNum) {
 		return firstNum % secondNum;
 	}
-
-
 }
