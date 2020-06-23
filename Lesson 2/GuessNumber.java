@@ -2,23 +2,18 @@ import java.util.Scanner;
 
 public class GuessNumber {
 	
+	private Player playerOne;
+	private Player playerTwo;
 	private int randomNumber;
 	private boolean winner = false;
 	Scanner scan = new Scanner(System.in);
 
-	public int getRandomNumber() {
-		return randomNumber;
+	public GuessNumber(Player playerOne, Player playerTwo) {
+		this.playerOne = playerOne;
+		this.playerTwo = playerTwo;
 	}
 
-	public boolean getWinner() {
-		return winner;
-	}
-
-	public void makeNumber() {
-		randomNumber = (int) (Math.random() * 100);
-	}
-
-	public void start (Player playerOne, Player playerTwo) {
+	public void start() {
 		makeNumber();
 		System.out.println("Компьютер загадал число. Попробуйте отгадайте");
 		while(!winner) {
@@ -33,17 +28,17 @@ public class GuessNumber {
 		}
 	}
 
-	public boolean compare(Player player) {
-		if(player.getNumber() > randomNumber) {
-			System.out.println("Загаданное число меньше");
-			return false;
-		} else if(player.getNumber() < randomNumber) {
-			System.out.println("Загадонное число больше");
-			return false;
-		} else {
+	private void makeNumber() {
+		randomNumber = (int) ((Math.random() * 99) + 1);
+	}
+
+	private boolean compare(Player player) {
+		if(player.getNumber() == randomNumber) {
 			System.out.println("Игрок " + player.getName() + " победил!");
 			winner = true;
 			return true;
 		}
+		System.out.println((player.getNumber() < randomNumber) ? "Загадонное число больше" : "Загаданное число меньше");
+		return false;
 	}
 }

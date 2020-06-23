@@ -6,16 +6,16 @@ public class GuessNumberTest {
 		String answer;
 		Scanner scan = new Scanner(System.in);
 		do {
-			GuessNumber game = new GuessNumber();
 			System.out.println("Введите имя первого игрока");
 			Player playerOne = new Player(scan.nextLine());
 			System.out.println("Введите имя второго игрока");
 			Player playerTwo = new Player(scan.nextLine());
-			game.start(playerOne, playerTwo);
+			GuessNumber game = new GuessNumber(playerOne, playerTwo);
+			game.start();
 			do {
 				System.out.println("Хотите продолжить? [Y/N]");
 				answer = scan.nextLine();
-			} while(!answer.equalsIgnoreCase("n") & !answer.equalsIgnoreCase("y"));
+			} while(!answer.equalsIgnoreCase("n") && !answer.equalsIgnoreCase("y"));
 		} while(answer.equalsIgnoreCase("y"));
 	}
 }
