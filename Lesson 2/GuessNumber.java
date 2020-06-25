@@ -16,11 +16,11 @@ public class GuessNumber {
 	public void start() {
 		makeNumber();
 		System.out.println("Компьютер загадал число. Попробуйте отгадайте");
-		while(!winner) {
+		while(true) {
 			System.out.println("Первый игрок введи число");
 			playerOne.setNumber(scan.nextInt());
 			compare(playerOne);
-			if(!winner) {
+			if(!compare(playerOne)) {
 				System.out.println("Второй игрок введи число");
 				playerTwo.setNumber(scan.nextInt());
 				compare(playerTwo);
@@ -29,13 +29,12 @@ public class GuessNumber {
 	}
 
 	private void makeNumber() {
-		randomNumber = (int) ((Math.random() * 99) + 1);
+		randomNumber = (int) ((Math.random() * 100) + 1);
 	}
 
 	private boolean compare(Player player) {
 		if(player.getNumber() == randomNumber) {
 			System.out.println("Игрок " + player.getName() + " победил!");
-			winner = true;
 			return true;
 		}
 		System.out.println((player.getNumber() < randomNumber) ? "Загадонное число больше" : "Загаданное число меньше");
