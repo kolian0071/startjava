@@ -5,7 +5,6 @@ public class GuessNumber {
 	private Player playerOne;
 	private Player playerTwo;
 	private int randomNumber;
-	private boolean winner = false;
 	Scanner scan = new Scanner(System.in);
 
 	public GuessNumber(Player playerOne, Player playerTwo) {
@@ -16,16 +15,15 @@ public class GuessNumber {
 	public void start() {
 		makeNumber();
 		System.out.println("Компьютер загадал число. Попробуйте отгадайте");
-		while(true) {
+		do {
 			System.out.println("Первый игрок введи число");
 			playerOne.setNumber(scan.nextInt());
-			compare(playerOne);
-			if(!compare(playerOne)) {
-				System.out.println("Второй игрок введи число");
-				playerTwo.setNumber(scan.nextInt());
-				compare(playerTwo);
+			if(compare(playerOne)) {
+				break;
 			}
-		}
+			System.out.println("Второй игрок введи число");
+			playerTwo.setNumber(scan.nextInt());
+		} while(!compare(playerTwo));
 	}
 
 	private void makeNumber() {
