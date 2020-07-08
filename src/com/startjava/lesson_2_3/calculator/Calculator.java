@@ -2,84 +2,38 @@ package com.startjava.lesson_2_3.calculator;
 
 public class Calculator {
 
-	private int firstNum;
-	private int secondNum;
-	private char sign;
+	private String[] equation = new String[3];
 
-	public int getFirstNum() {
-		return firstNum;
-	}
-
-	public int getSecondNum() {
-		return secondNum;
-	}
-
-	public char getSign() {
-		return sign;
-	}
-
-	public void setFirstNum(int firstNum) {
-		this.firstNum = firstNum;
-	}
-
-	public void setSecondNum(int secondNum) {
-		this.secondNum = secondNum;
-	}
-
-	public void setSign(char sign) {
-		this.sign = sign;
+	public void setEquation(String equation) {
+		this.equation = equation.split(" ", 3);
 	}
 
 	public int calculate() {
 		int result = 0;
-		switch(sign) {
+		switch(equation[1].charAt(0)) {
 			case '+':
-				result = add(firstNum, secondNum);
+				result = Math.addExact(Integer.parseInt(equation[0]), Integer.parseInt(equation[2]));
 				break;
 			case '-':
-				result = subtract(firstNum, secondNum);
+				result = Math.subtractExact(Integer.parseInt(equation[0]), Integer.parseInt(equation[2]));
 				break;
 			case '*':
-				result = multiply(firstNum, secondNum);
+				result = Math.multiplyExact(Integer.parseInt(equation[0]), Integer.parseInt(equation[2]));
 				break;
 			case '/':
-				result = divide(firstNum, secondNum);
+				result = divide(Integer.parseInt(equation[0]), Integer.parseInt(equation[2]));
 				break;
 			case '^':
-				result = exp(firstNum, secondNum);
+				result = (int) Math.pow(Integer.parseInt(equation[0]), Integer.parseInt(equation[2]));
 				break;
 			case '%':
-				result = mod(firstNum, secondNum);
+				result = Math.floorMod(Integer.parseInt(equation[0]), Integer.parseInt(equation[2]));
 				break;
 		}
 		return result;
 	}
 
-	public int add(int firstNum, int secondNum) {
-		return firstNum + secondNum;
-	}
-
-	public int subtract(int firstNum, int secondNum) {
-		return firstNum - secondNum;
-	}
-
-	public int multiply(int firstNum, int secondNum) {
-		return firstNum * secondNum;
-	}
-
 	public int divide(int firstNum, int secondNum) {
 		return firstNum / secondNum;
-	}
-
-	public int exp(int firstNum, int secondNum) {
-		int result = 1;
-			for(int i = 1; i <= secondNum; i++) {
-				result *= firstNum;
-			}
-		return result;
-	}
-
-	public int mod(int firstNum, int secondNum) {
-		return firstNum % secondNum;
 	}
 }
