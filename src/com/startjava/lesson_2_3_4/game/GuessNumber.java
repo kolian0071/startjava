@@ -1,4 +1,4 @@
-package com.startjava.lesson_2_3.game;
+package com.startjava.lesson_2_3_4.game;
 
 import java.util.Scanner;
 
@@ -16,7 +16,7 @@ public class GuessNumber {
 
 	public void start() {
 		makeNumber();
-		System.out.println("Компьютер загадал число. Попробуйте отгадайте");
+		System.out.println("Компьютер загадал число. У вас 10 попыток чтобы его отгадать");
 		do {
 			System.out.println("Первый игрок введи число");
 			playerOne.setNumber(scan.nextInt());
