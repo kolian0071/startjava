@@ -10,7 +10,7 @@ public class CalculatorTest {
 		System.out.println("Calculator ver. 1.1");
 		do {
 			System.out.print("Введите математическое выражение: ");
-			calculator.setEquation(scan.nextLine());
+			calculator.setMathExpression(scan.nextLine());
 			System.out.println("Решение: " + calculator.calculate());
 			
 			do {

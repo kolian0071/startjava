@@ -4,8 +4,8 @@ public class Calculator {
 
 	private String[] mathExpression = new String[3];
 
-	public void setEquation(String equation) {
-		this.mathExpression = equation.split(" ", 3);
+	public void setMathExpression(String mathExpression) {
+		this.mathExpression = mathExpression.split(" ", 3);
 	}
 
 	public int calculate() {
