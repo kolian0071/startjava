@@ -16,26 +16,26 @@ public class GuessNumber {
 	}
 
 	public void start() {
-		makeNumber();
+		generateNumber();
 		System.out.println("Компьютер загадал число. У вас 10 попыток, чтобы отгадать его");
 		for(int i = 0; i < 10; i++) {
-			System.out.println("Первый игрок введи число");
-			playerOne.numbers[i] = scan.nextInt();
+			System.out.println("Первый игрок, введи число");
+			playerOne.setNumbers(scan.nextInt(), i);
 			if(compare(playerOne, i)) {
-				printArray(playerOne.numbers, i + 1);
-				printArray(playerTwo.numbers, i);
-				Arrays.fill(playerOne.numbers, 0, i, 0);
-				Arrays.fill(playerOne.numbers, 0, i - 1, 0);
+				printNumbers(playerOne.getNumbers(), i + 1);
+				printNumbers(playerTwo.getNumbers(), i);
+				Arrays.fill(playerOne.getNumbers(), 0, i, 0);
+				Arrays.fill(playerOne.getNumbers(), 0, i - 1, 0);
 				break;
 			}
 			if(i == 9) {
 				System.out.println("У игрока " + playerOne.getName() + " закончились попытки");
 			}
-			System.out.println("Второй игрок введи число");
-			playerTwo.numbers[i] = scan.nextInt();
+			System.out.println("Второй игрок, введи число");
+			playerTwo.setNumbers(scan.nextInt(), i);
 			if(compare(playerTwo, i)) {
-				printArray(playerOne.numbers, i + 1);
-				printArray(playerTwo.numbers, i + 1);
+				printNumbers(playerOne.getNumbers(), i + 1);
+				printNumbers(playerTwo.getNumbers(), i + 1);
 				break;
 			}
 			if(i == 9) {
@@ -44,21 +44,22 @@ public class GuessNumber {
 		}
 	}
 
-	private void makeNumber() {
+	private void generateNumber() {
 		randomNumber = (int) ((Math.random() * 100) + 1);
 	}
 
 	private boolean compare(Player player, int round) {
-		if(player.numbers[round] == randomNumber) {
+		if(player.getNumbers()[round] == randomNumber) {
 			round++;
 			System.out.println("Игрок " + player.getName() + " угадал число " + randomNumber + " c " + round + " попытки");
 			return true;
 		}
-		System.out.println((player.numbers[round] < randomNumber) ? "Загадонное число больше" : "Загаданное число меньше");
+		System.out.println((player.getNumbers()[round] < randomNumber) ? "Загадонное число больше" : "Загаданное число меньше");
 		return false;
 	}
-	private void printArray (int[] array, int round) {
-		int[] arrayCopy = Arrays.copyOf(array, round);
-		System.out.println(Arrays.toString(arrayCopy));
+
+	private void printNumbers(int[] array, int round) {
+		int[] numbers = Arrays.copyOf(array, round);
+		System.out.println(Arrays.toString(numbers));
 	}
 }

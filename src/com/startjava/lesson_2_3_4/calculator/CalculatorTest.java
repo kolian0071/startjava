@@ -16,7 +16,7 @@ public class CalculatorTest {
 			do {
 				System.out.println("Хотите продолжить? [Y/N]");
 				answer = scan.nextLine();
-			} while(!answer.equalsIgnoreCase("n") & !answer.equalsIgnoreCase("y"));
+			} while(!answer.equalsIgnoreCase("n") && !answer.equalsIgnoreCase("y"));
 		} while(answer.equalsIgnoreCase("y"));
 	}
 }
