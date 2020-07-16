@@ -19,27 +19,28 @@ public class GuessNumber {
 		generateNumber();
 		System.out.println("Компьютер загадал число. У вас 10 попыток, чтобы отгадать его");
 		for(int i = 0; i < 10; i++) {
-			System.out.println("Первый игрок, введи число");
-			playerOne.setNumbers(scan.nextInt(), i);
+			inputNumber(playerOne, i);
 			if(compare(playerOne, i)) {
-				printNumbers(playerOne.getNumbers(), i + 1);
-				printNumbers(playerTwo.getNumbers(), i);
+				printNumbers(playerOne.getNumbers(), playerTwo.getNumbers(), i + 1, i);
 				Arrays.fill(playerOne.getNumbers(), 0, i, 0);
-				Arrays.fill(playerOne.getNumbers(), 0, i - 1, 0);
+				Arrays.fill(playerTwo.getNumbers(), 0, i - 1, 0);
 				break;
 			}
 			if(i == 9) {
 				System.out.println("У игрока " + playerOne.getName() + " закончились попытки");
 			}
-			System.out.println("Второй игрок, введи число");
-			playerTwo.setNumbers(scan.nextInt(), i);
+			inputNumber(playerTwo, i );
 			if(compare(playerTwo, i)) {
-				printNumbers(playerOne.getNumbers(), i + 1);
-				printNumbers(playerTwo.getNumbers(), i + 1);
+				printNumbers(playerOne.getNumbers(), playerTwo.getNumbers(), i + 1, i + 1);
+				Arrays.fill(playerOne.getNumbers(), 0, i, 0);
+				Arrays.fill(playerTwo.getNumbers(), 0, i, 0);
 				break;
 			}
 			if(i == 9) {
 				System.out.println("У игрока " + playerTwo.getName() + " закончились попытки");
+				printNumbers(playerOne.getNumbers(), playerTwo.getNumbers(), i + 1, i + 1);
+				Arrays.fill(playerOne.getNumbers(), 0, i, 0);
+				Arrays.fill(playerTwo.getNumbers(), 0, i, 0);
 			}
 		}
 	}
@@ -48,18 +49,23 @@ public class GuessNumber {
 		randomNumber = (int) ((Math.random() * 100) + 1);
 	}
 
+	private void inputNumber(Player player, int index) {
+		System.out.println("Игрок " + player.getName() + " , введи число");
+		player.setNumber(scan.nextInt(), index);
+	}
+
 	private boolean compare(Player player, int round) {
-		if(player.getNumbers()[round] == randomNumber) {
-			round++;
-			System.out.println("Игрок " + player.getName() + " угадал число " + randomNumber + " c " + round + " попытки");
+		int number = player.getNumbers()[round];
+		if(number == randomNumber) {
+			System.out.println("Игрок " + player.getName() + " угадал число " + randomNumber + " c " + (round + 1) + " попытки");
 			return true;
 		}
-		System.out.println((player.getNumbers()[round] < randomNumber) ? "Загадонное число больше" : "Загаданное число меньше");
+		System.out.println((number < randomNumber) ? "Загадонное число больше" : "Загаданное число меньше");
 		return false;
 	}
 
-	private void printNumbers(int[] array, int round) {
-		int[] numbers = Arrays.copyOf(array, round);
-		System.out.println(Arrays.toString(numbers));
+	private void printNumbers(int[] numbersPlayerOne, int[] numbersPlayerTwo, int roundPlayerOne, int roundPlayerTwo) {
+		System.out.println(Arrays.toString(Arrays.copyOf(numbersPlayerOne, roundPlayerOne)));
+		System.out.println(Arrays.toString(Arrays.copyOf(numbersPlayerTwo, roundPlayerTwo)));
 	}
 }
