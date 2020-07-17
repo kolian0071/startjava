@@ -23,15 +23,9 @@ public class GuessNumber {
 			if(compare(playerOne)) {
 				break;
 			}
-			if(i == 9) {
-				System.out.println("У игрока " + playerOne.getName() + " закончились попытки");
-			}
 			inputNumber(playerTwo, i );
 			if(compare(playerTwo)) {
 				break;
-			}
-			if(i == 9) {
-				System.out.println("У игрока " + playerTwo.getName() + " закончились попытки");
 			}
 		}
 		printNumbers(playerOne);
@@ -52,6 +46,9 @@ public class GuessNumber {
 
 	private boolean compare(Player player) {
 		int number = player.getNumbers()[player.getRound()];
+		if(player.getRound() == 9) {
+			System.out.println("У игрока " + player.getName() + " закончились попытки");
+		}
 		if(number == randomNumber) {
 			System.out.println("Игрок " + player.getName() + " угадал число " + randomNumber + " c " + (player.getRound() + 1) + " попытки");
 			return true;
